@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService.Reports" />
+  <xs:complexType name="ArrayOfKeyValueOfintAnualReportData2MQQ5Z0B">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintAnualReportData2MQQ5Z0B">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ProjectLibraryService" name="Value" nillable="true" type="q1:AnualReportData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintAnualReportData2MQQ5Z0B" nillable="true" type="tns:ArrayOfKeyValueOfintAnualReportData2MQQ5Z0B" />
+  <xs:complexType name="ArrayOfKeyValueOfintPart3ReportData3kVlALYg">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintPart3ReportData3kVlALYg">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ProjectLibraryService.Reports" name="Value" nillable="true" type="q2:Part3ReportData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfintPart3ReportData3kVlALYg" nillable="true" type="tns:ArrayOfKeyValueOfintPart3ReportData3kVlALYg" />
+  <xs:complexType name="ArrayOfKeyValueOfstringBooksReportData2MQQ5Z0B">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringBooksReportData2MQQ5Z0B">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Key" nillable="true" type="xs:string" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ProjectLibraryService" name="Value" nillable="true" type="q3:BooksReportData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyValueOfstringBooksReportData2MQQ5Z0B" nillable="true" type="tns:ArrayOfKeyValueOfstringBooksReportData2MQQ5Z0B" />
+</xs:schema>

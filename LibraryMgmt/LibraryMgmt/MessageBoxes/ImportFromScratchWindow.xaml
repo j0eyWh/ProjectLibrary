@@ -1,0 +1,45 @@
+﻿<Window x:Class="LibraryMgmt.MessageBoxes.ImportFromScratchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryMgmt.MessageBoxes"
+        mc:Ignorable="d"
+        Title="Import from scratch" Height="605.356" Width="899.432">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="481*"/>
+            <ColumnDefinition Width="410*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="447" Margin="10,10,0,0" VerticalAlignment="Top" Width="375" Source="/LibraryMgmt;component/Images/defaultPicture.png" Stretch="Fill"/>
+        <Button x:Name="openBtn" Content="Open..." Grid.Column="1" HorizontalAlignment="Left" Margin="31,429,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="openBtn_Click"/>
+        <Button x:Name="scanBtn" Content="Scan..." Grid.Column="1" HorizontalAlignment="Left" Margin="122,429,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+        <TextBox x:Name="idRmfTb" HorizontalAlignment="Left" Height="23" Margin="191,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label" Content="Cod inregistrare" HorizontalAlignment="Left" Margin="23,19,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+        <TextBox x:Name="dateInTb" HorizontalAlignment="Left" Height="23" Margin="191,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy" Content="Data inregistrare" HorizontalAlignment="Left" Margin="23,61,0,0" VerticalAlignment="Top" Height="26" Width="98"/>
+        <TextBox x:Name="docInTb" HorizontalAlignment="Left" Height="23" Margin="191,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy1" Content="Codul documentului" HorizontalAlignment="Left" Margin="23,106,0,0" VerticalAlignment="Top" Height="26" Width="118"/>
+        <Label x:Name="label_Copy2" Content="Cantitatea:" HorizontalAlignment="Left" Margin="23,150,0,0" VerticalAlignment="Top" Height="26" Width="67"/>
+        <TextBox x:Name="quantityTb" HorizontalAlignment="Left" Height="23" Margin="191,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <TextBox x:Name="totalValueTb" HorizontalAlignment="Left" Height="23" Margin="191,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy3" Content="Valoare totala:" HorizontalAlignment="Left" Margin="23,197,0,0" VerticalAlignment="Top" Height="26" Width="85"/>
+        <TextBox x:Name="firstInvNrTb" HorizontalAlignment="Left" Height="23" Margin="191,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" TextChanged="firstInvNrTb_TextChanged"/>
+        <Label x:Name="label_Copy4" Content="Primul numar de inventar:" HorizontalAlignment="Left" Margin="23,243,0,0" VerticalAlignment="Top" Height="26" Width="147"/>
+        <TextBox x:Name="lastInvNrTb" HorizontalAlignment="Left" Height="23" Margin="191,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy5" Content="Ultimul numar de inventar:" HorizontalAlignment="Left" Margin="23,282,0,0" VerticalAlignment="Top" Height="26" Width="151"/>
+        <TextBox x:Name="contentCatTb" HorizontalAlignment="Left" Height="23" Margin="191,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy6" Content="Categoria de continut" HorizontalAlignment="Left" Margin="23,330,0,0" VerticalAlignment="Top" Height="26" Width="125"/>
+        <TextBox x:Name="originTb" HorizontalAlignment="Left" Height="23" Margin="191,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy7" Content="Provenienta" HorizontalAlignment="Left" Margin="23,375,0,0" VerticalAlignment="Top" Height="26" Width="73"/>
+        <Separator Height="36" Margin="175,406,10,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="isOutCb" Content="Este scos din evidenta" HorizontalAlignment="Left" Margin="25,418,0,0" VerticalAlignment="Top" Height="15" Width="136"/>
+        <TextBox x:Name="dateOutTb" HorizontalAlignment="Left" Height="23" Margin="191,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" IsEnabled="{Binding IsChecked, ElementName=isOutCb}"/>
+        <Label x:Name="label_Copy8" Content="Data scoaterii din evidenta:" HorizontalAlignment="Left" Margin="25,444,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=isOutCb}" Height="26" Width="153"/>
+        <TextBox x:Name="outCouseTb" HorizontalAlignment="Left" Height="23" Margin="191,490,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259" IsEnabled="{Binding IsChecked, ElementName=isOutCb}"/>
+        <Label x:Name="label_Copy9" Content="Cauza scoateri din evidenta" HorizontalAlignment="Left" Margin="25,487,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=isOutCb}" Height="26" Width="155"/>
+        <Button x:Name="okBtn" Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="220,533,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="okBtn_Click"/>
+        <Button IsCancel="True" x:Name="cancelBtn" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="310,533,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

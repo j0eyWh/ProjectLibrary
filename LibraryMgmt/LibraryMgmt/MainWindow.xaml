@@ -1,0 +1,314 @@
+﻿<RibbonWindow    
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryMgmt"
+        xmlns:viewModels="clr-namespace:LibraryMgmt.ViewModels"
+        x:Class="LibraryMgmt.MainWindow"
+        mc:Ignorable="d"
+        Title="Library Mgtm" Height="482.801" Width="774.14" Icon="Images/Book_Green.ico" Loaded="MainWindow_OnLoaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel LastChildFill="False" Grid.Row="2">
+            <StatusBar x:Name="StatusBr" Background="#FF007ACC"  DockPanel.Dock="Bottom" >
+                <!--<StatusBarItem  Foreground="WhiteSmoke" Content="Here is your sts bar" />
+                
+                <StatusBarItem Width="42" HorizontalAlignment="Right">dasda</StatusBarItem>
+                <StatusBarItem  Foreground="WhiteSmoke" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="16" Height="16" >
+                    <StatusBarItem.Background>
+                        <ImageBrush ImageSource="Images/resize.png" Stretch="Uniform"/>
+                    </StatusBarItem.Background>
+                </StatusBarItem>-->
+                <StatusBarItem HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Foreground="LavenderBlush" Height="26" Width="48" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,-6,0,0">Ready</Label>
+                </StatusBarItem>
+                <StatusBarItem x:Name="RightStatusBarItems" HorizontalAlignment="Right">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">
+                        <Grid.DataContext>
+                            <viewModels:ProgressViewModel/>
+                        </Grid.DataContext>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Foreground="White" x:Name="ProgerssMessage"  VerticalAlignment="Top" Height="24" Margin="0,-4,0,0" Visibility="{Binding Visibility}" Content="{Binding ProgressMessage}"/>
+                        <ProgressBar x:Name="ProgressBar" IsIndeterminate="True" Grid.Column="1" Margin="0,3,20,3" Visibility="{Binding Visibility}"></ProgressBar>
+                        <Image Grid.Column="2" Source="Images/resize.png" Margin="3,0,-3,0"/>
+                    </Grid>
+                </StatusBarItem>
+
+            </StatusBar>
+        </DockPanel>
+
+        <Ribbon x:Name="RibbonW" SelectionChanged="Ribbon_SelectionChanged">
+            <Ribbon.HelpPaneContent>
+                <RibbonButton x:Name="helpButton"  SmallImageSource="Images/Help.png" Label="Get Help" Click="helpButton_Click"></RibbonButton>
+            </Ribbon.HelpPaneContent>
+
+            <Ribbon.ApplicationMenu >
+                <RibbonApplicationMenu  Label="File">
+                    <RibbonApplicationMenu.FooterPaneContent>
+                        <RibbonButton Label="Exit" HorizontalAlignment="Right" Click="closeButton_Click"></RibbonButton>
+                    </RibbonApplicationMenu.FooterPaneContent>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <Ribbon.ContextualTabGroups>
+                <RibbonContextualTabGroup x:Name="RmfTabGroup" Visibility="Visible" Header="Rmf Tools" Background="Violet"></RibbonContextualTabGroup>
+                <RibbonContextualTabGroup x:Name="BooksTabGroup" Visibility="Visible" Header="Book Tools" Background="Orange"></RibbonContextualTabGroup>
+                <RibbonContextualTabGroup x:Name="UsersTabGroup" Visibility="Visible" Header="User Tools" Background="Green"></RibbonContextualTabGroup>
+            </Ribbon.ContextualTabGroups>
+
+            <RibbonTab x:Name="HomeTab" IsSelected="True" Header="Home">
+                <RibbonTab.DataContext>
+                    <viewModels:ServicesViewModel x:Name="ServicesViewModel"/>
+                </RibbonTab.DataContext>
+                <RibbonGroup Header="Services">
+                    <RibbonButton LargeImageSource="Images/StartStop.png" Label="{Binding ReservationSatelliteStateString}" Click="ReservationSatellite_Click"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="ToolsTab" Header="Tools" ContextualTabGroupHeader="Rmf Tools">
+                <RibbonGroup Header="Create or Import">
+                    <RibbonButton x:Name="newRmfButton" LargeImageSource="Images/NewDocumentlarge.png" Label="New..." Click="newRmfButton_Click"/>
+                    <RibbonMenuButton x:Name="importDropDownBtn" Label="Import" LargeImageSource="Images/Import.png">
+                        <RibbonMenuItem x:Name="importFromScratchBtn" Header="Import from scratch..." ImageSource="Images\smalledit.png" Click="importFromScratchBtn_Click" ></RibbonMenuItem>
+                        <RibbonMenuItem x:Name="importFromExcelBtn" Header="Import from Excel..." ImageSource="Images\excel.png" ></RibbonMenuItem>
+                    </RibbonMenuButton>
+
+                </RibbonGroup>
+                <RibbonGroup Header="Edit">
+                    <RibbonButton x:Name="deleteSelectedBtn" Label="Delete selected..." SmallImageSource="Images\delete.png" Click="deleteSelectedBtn_Click"></RibbonButton>
+                    <RibbonButton x:Name="getOutBtn" Label="Unreg selected..." SmallImageSource="Images\ChangeQueryType.bmp" Click="getOutBtn_Click"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="ReportsTab" Header="Reports" ContextualTabGroupHeader="Rmf Tools">
+                <RibbonGroup Header="General">
+                    <RibbonButton x:Name="generalReportBtn"  LargeImageSource="Images/GeneralReport.png" Label="General report" Click="generalReportBtn_Click"/>
+                    <RibbonButton x:Name="aboutRecordBtn"  LargeImageSource="Images/Page.png" Label="About record report" Click="aboutRecordBtn_Click" />
+                </RibbonGroup>
+                <RibbonGroup Header="Global">
+                    <RibbonButton x:Name="anualReportButton" Label="Anual Report"  LargeImageSource="Images\calendar.png" Click="anualReportButton_Click"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab  x:Name="BooksMgmtTab" ContextualTabGroupHeader="Book Tools" Header="Books Mgmt">
+                <RibbonGroup Header="Create">
+                    <RibbonButton x:Name="NewBookBtn" LargeImageSource="Images\newBook.png" Label="New book..." Click="NewBookBtn_Click"></RibbonButton>
+
+                </RibbonGroup>
+
+                <RibbonGroup Header="Edit">
+                    <RibbonButton x:Name="EditBookBtn" LargeImageSource="Images\editBook.png" Label="Edit selected..." Click="EditBookBtn_Click" ></RibbonButton>
+                    <RibbonButton x:Name="DeleteBookBtn" SmallImageSource="Images\delete.png" Label="Delete selected" Click="DeleteBookBtn_Click"></RibbonButton>
+                </RibbonGroup>
+
+                <RibbonGroup Header="Search" Margin="0,1" Width="165">
+                    <RibbonTextBox x:Name="BookSearchTb"></RibbonTextBox>
+                    <RibbonButton x:Name="UndoBookSearchBtn" Label="Reset list" SmallImageSource="Images\undoSearch.png" Click="UndoBookSearchBtn_Click"></RibbonButton>
+                    <RibbonButton x:Name="BookSearchBtn" Label="Search" SmallImageSource="Images\search.png" Click="BookSearchBtn_Click" ></RibbonButton>
+                </RibbonGroup>
+
+                <RibbonGroup Header="Reports">
+                    <RibbonButton Label="General Report" LargeImageSource="Images/bookReport.png" Click="GeneralBooksReportBtn_Click"></RibbonButton>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="UserToolsTab"  Header="Users Mgmt" ContextualTabGroupHeader="User Tools">
+                <RibbonGroup Header="Create or edit">
+                    <RibbonButton LargeImageSource="Images\newUser.Png" Label="Add User..." Click="AddUserBtn_Click"></RibbonButton>
+                    <RibbonButton LargeImageSource="Images\editUser.png" Label="Edit User..." Click="EditUserBtn_Click"></RibbonButton>
+                    <RibbonButton LargeImageSource="Images\deleteUser.png" Label="Delete User..." Click="DeleteUserBnt_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Header="User's Books">
+                    <RibbonRadioButton IsChecked="True" LargeImageSource="Images\ownedBooks.png" Label="On hands" Click="OnHandsBooksButton_Click"></RibbonRadioButton>
+                    <RibbonRadioButton Label="Reserved" SmallImageSource="Images\reserv.png" Click="ReservedBooksButton_Click"></RibbonRadioButton>
+                    <RibbonRadioButton Label="History" SmallImageSource="Images\history.png" Click="OwnedBooksButton_Click"></RibbonRadioButton>
+                </RibbonGroup>
+                <RibbonGroup Header="User's Books Actions">
+                    <RibbonButton x:Name="SetReturnedBtn" Label="Set returned" LargeImageSource="Images\returnBook.png" Click="ReturnBookBtn_Click"/>
+                    <RibbonButton x:Name="CheckOutReserved" Label="Check Out" IsEnabled="False" LargeImageSource="Images\checkOut.png" Click="CheckOutReserved_Click" />
+                </RibbonGroup>
+
+                <RibbonGroup Header="Search users" Margin="0,1">
+                    <RibbonTextBox x:Name="SearchUserTextBox"></RibbonTextBox>
+                    <RibbonButton x:Name="ResetUserListBtn" Label="Reset list" SmallImageSource="Images\undoSearch.png" Click="ResetUserListBtn_OnClick_Click"/>
+                    <RibbonButton x:Name="SearchUsersBtn" Label="Search" SmallImageSource="Images\search.png" Click="SearchUsersBtn_OnClick"/>
+
+                </RibbonGroup>
+
+
+
+            </RibbonTab>
+        </Ribbon>
+
+
+        <TabControl x:Name="mainTabControl" Grid.Row="1" Margin="0,5,0,0" SelectionChanged="mainTabControl_SelectionChanged">
+            <TabItem x:Name="RmfInTab" Header="RMF" TabIndex="0">
+                <TabItem.DataContext>
+                    <viewModels:RmfInViewModel x:Name="RmfInViewModel"/>
+                </TabItem.DataContext>
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="listView" ItemsSource="{Binding RmfInList}" SelectedItem="{Binding SelectedItem}" SelectionChanged="listView_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Numar" DisplayMemberBinding="{Binding IdRmf}"/>
+
+                                <GridViewColumn Header="Data Inregistrare" DisplayMemberBinding="{Binding DateIn}"/>
+                                <GridViewColumn Header="Nr. doc intrare" DisplayMemberBinding="{Binding DocId}"/>
+                                <GridViewColumn Header="Numar de exemplare" DisplayMemberBinding="{Binding Quantity}"/>
+                                <GridViewColumn Header="Valoare totala" DisplayMemberBinding="{Binding TotalValue}"/>
+                                <GridViewColumn Header="Prim.Inv. Nr" DisplayMemberBinding="{Binding FirstInvNr}"/>
+                                <GridViewColumn Header="Ultim.Inv. Nr" DisplayMemberBinding="{Binding LastInvNr}"/>
+                                <GridViewColumn Header="Continut" DisplayMemberBinding="{Binding ContentCat}"/>
+                                <GridViewColumn Header="Provenienta" DisplayMemberBinding="{Binding Origin}"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="RmfOutTab" Header="RMF-partea2 Excluse" TabIndex="1">
+                <TabItem.DataContext>
+                    <viewModels:RmfOutViewModel x:Name="RmfOutViewModel"/>
+                </TabItem.DataContext>
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="listViewOut" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}" SelectionChanged="listViewOut_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Numar" DisplayMemberBinding="{Binding IdRmf}"/>
+                                <GridViewColumn Header="Data Inregistrare" DisplayMemberBinding="{Binding DateIn}"/>
+                                <GridViewColumn Header="Data Excludere" DisplayMemberBinding="{Binding DateOut}"/>
+                                <GridViewColumn Header="Nr. doc intrare" DisplayMemberBinding="{Binding DocId}"/>
+                                <GridViewColumn Header="Numar de exemplare" DisplayMemberBinding="{Binding Quantity}"/>
+                                <GridViewColumn Header="Valoare totala" DisplayMemberBinding="{Binding TotalValue}"/>
+                                <GridViewColumn Header="Prim.Inv. Nr" DisplayMemberBinding="{Binding FirstInvNr}"/>
+                                <GridViewColumn Header="Ultim.Inv. Nr" DisplayMemberBinding="{Binding LastInvNr}"/>
+                                <GridViewColumn Header="Continut" DisplayMemberBinding="{Binding ContentCat}"/>
+                                <GridViewColumn Header="Provenienta" DisplayMemberBinding="{Binding Origin}"/>
+                                <GridViewColumn Header="Cauza excludere" DisplayMemberBinding="{Binding OutCause}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="BooksTab" Header="Carti in stoc" TabIndex="1">
+                <TabItem.DataContext>
+                    <viewModels:BooksViewModel x:Name="BooksViewModel"/>
+                </TabItem.DataContext>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="498*"/>
+                        <ColumnDefinition Width="3"/>
+                        <ColumnDefinition Width="259*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GridSplitter Background="LightBlue" Grid.Column="1" HorizontalAlignment="Stretch" Margin="1,0,0,0"/>
+
+
+
+                    <ListView x:Name="listViewBooks" SelectionChanged="listViewOut_SelectionChanged" ItemsSource="{Binding BookList}" SelectedItem="{Binding SelectedBook, Mode=TwoWay}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Cod" DisplayMemberBinding="{Binding BookId}"/>
+                                <GridViewColumn Header="Titlu" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Author}"/>
+                                <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Category}"/>
+                                <GridViewColumn Header="Data Inregistrare" DisplayMemberBinding="{Binding RegistrationDate}"/>
+                                <GridViewColumn Header="Editura" DisplayMemberBinding="{Binding Publisher}"/>
+                                <GridViewColumn Header="Anul de publicare" DisplayMemberBinding="{Binding Year}"/>
+                                <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                                <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}"/>
+                                <GridViewColumn Header="C.B.L" DisplayMemberBinding="{Binding CanLend}"/>
+                            </GridView>
+                        </ListView.View>
+
+                    </ListView>
+
+                    <Grid Background="White" Grid.Column="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="61*"/>
+                            <RowDefinition Height="26*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0" Grid.Column="1" x:Name="image" Margin="0,10,10,0" Source="{Binding SelectedBook.Image, FallbackValue=Images\editBook.png, IsAsync=True, Mode=OneWay, TargetNullValue=Images\editBook.png}"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+                            <TextBlock  TextWrapping="Wrap"  Grid.Row="1" x:Name="label" Text="{Binding SelectedBook.Description, FallbackValue='Select a book...'}" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="13.333"/>
+                        </ScrollViewer>
+
+                        <Label x:Name="label1" Content="{Binding SelectedBookAvailableAmount, FallbackValue='Select a book', TargetNullValue='Some'}" Margin="10,38,9,0" VerticalAlignment="Top" FontSize="13.333" FontWeight="Bold"/>
+                        <Label x:Name="label2" Content="Disponibile:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="13.333" FontStyle="Italic"/>
+
+                        <Button x:Name="button" Content="Imprumuta..." Margin="10,71,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" IsEnabled="{Binding SelectedBook.CanLend}" Click="LendBtn_Click"/>
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="UsersTab"  IsSelected="True" Header="Users">
+                <TabItem.DataContext>
+                    <viewModels:UsersViewModel x:Name="UsersViewModel"></viewModels:UsersViewModel>
+                </TabItem.DataContext>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="380*"/>
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="377*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GridSplitter Background="LightBlue" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,1,0"></GridSplitter>
+
+                    <ListView Grid.Column="0" ItemsSource="{Binding UserList}" SelectedItem="{Binding SelectedUser}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Cod" DisplayMemberBinding="{Binding UserId}"/>
+                                <GridViewColumn Header="Nume" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Prenume" DisplayMemberBinding="{Binding Surname}"/>
+                                <GridViewColumn Header="Data nastere" DisplayMemberBinding="{Binding BirthDate, StringFormat=\{0:M\}}"/>
+                                <GridViewColumn Header="Idnp" DisplayMemberBinding="{Binding Idnp}"/>
+                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email, TargetNullValue='-'}"/>
+                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding PhoneNumber, TargetNullValue='-'}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView x:Name="UserBooksListView" Grid.Column="2" ItemsSource="{Binding OnHandList}" SelectedItem="{Binding SelectedOnHand}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Titlul cartii" DisplayMemberBinding="{Binding BookCode.Book.Title}"/>
+                                <GridViewColumn Header="Cod carte" DisplayMemberBinding="{Binding BookCode.Book.BookId}"/>
+                                <GridViewColumn Header="Cod exemplar" DisplayMemberBinding="{Binding Code}"/>
+                                <GridViewColumn Header="Data imprumut" DisplayMemberBinding="{Binding LendDate, TargetNullValue='-', FallbackValue='-', StringFormat=\{0:D\}}"/>
+                                <GridViewColumn Header="Data returnare" DisplayMemberBinding="{Binding ReturnDate, TargetNullValue='-', FallbackValue='-', StringFormat=\{0:M\}}"/>
+                                <GridViewColumn Header="Data Expirare" DisplayMemberBinding="{Binding TimeOut, TargetNullValue='-', FallbackValue='-', StringFormat=\{0:M\}}"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                </Grid>
+
+
+            </TabItem>
+        </TabControl>
+
+
+
+    </Grid>
+
+</RibbonWindow>

@@ -1,0 +1,830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LibraryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService.Reports" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILibraryService_GetRmfList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfList" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetRmfList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_InsertRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_InsertRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetRmfById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfById" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetRmfById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetLastIndex_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastIndex" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetLastIndex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastIndexResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetRmfByDocId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfByDocId" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetRmfByDocId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRmfByDocIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetLastLastInvNr_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastLastInvNr" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetLastLastInvNr_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastLastInvNrResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetInRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetInRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetOutRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetOutRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GenerateAnualReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateAnualReport" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GenerateAnualReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateAnualReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GeneratePart3Report_InputMessage">
+    <wsdl:part name="parameters" element="tns:GeneratePart3Report" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GeneratePart3Report_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GeneratePart3ReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteMultipleRmf_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMultipleRmf" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteMultipleRmf_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMultipleRmfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAllBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBooks" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAllBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBook" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteBookById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookById" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteBookById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBooksByRmfId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksByRmfId" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBooksByRmfId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksByRmfIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBooksByRmfId_ArgumentExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:ArgumentException" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBook" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAllOnHands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOnHands" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetAllOnHands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOnHandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteOnHand_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOnHand" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteOnHand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOnHandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteOnHand_ArgumentExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System" name="detail" element="q2:ArgumentException" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodes" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserById" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddUser_ArgumentExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System" name="detail" element="q3:ArgumentException" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_UpdateUser_ArgumentExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System" name="detail" element="q4:ArgumentException" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReg_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReg" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRegResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetOnHands_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnHands" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetOnHands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnHandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodesOnHand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodesOnHand" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodesOnHand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodesOnHandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodesNotOnHand_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodesNotOnHand" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetBookCodesNotOnHand_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookCodesNotOnHandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUserOwnedBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOwnedBooks" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetUserOwnedBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserOwnedBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReservationPrimitive_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationPrimitive" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReservationPrimitive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationPrimitiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservation" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_AddReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteBookReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookReservation" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteBookReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBookReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteExpiredReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpiredReservations" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_DeleteExpiredReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExpiredReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservedBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservedBooks" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservedBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservedBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservations" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_StopReservationSatelite_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopReservationSatelite" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_StopReservationSatelite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopReservationSateliteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_StartReservationSatelite_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartReservationSatelite" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_StartReservationSatelite_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartReservationSateliteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservationSateliteState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationSateliteState" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetReservationSateliteState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationSateliteStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GenerateBookReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateBookReport" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GenerateBookReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateBookReportResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILibraryService">
+    <wsdl:operation name="GetRmfList">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetRmfList" message="tns:ILibraryService_GetRmfList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetRmfListResponse" message="tns:ILibraryService_GetRmfList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/InsertRmf" message="tns:ILibraryService_InsertRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/InsertRmfResponse" message="tns:ILibraryService_InsertRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteRmf" message="tns:ILibraryService_DeleteRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteRmfResponse" message="tns:ILibraryService_DeleteRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/UpdateRmf" message="tns:ILibraryService_UpdateRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/UpdateRmfResponse" message="tns:ILibraryService_UpdateRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRmfById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetRmfById" message="tns:ILibraryService_GetRmfById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetRmfByIdResponse" message="tns:ILibraryService_GetRmfById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastIndex">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetLastIndex" message="tns:ILibraryService_GetLastIndex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetLastIndexResponse" message="tns:ILibraryService_GetLastIndex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRmfByDocId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetRmfByDocId" message="tns:ILibraryService_GetRmfByDocId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetRmfByDocIdResponse" message="tns:ILibraryService_GetRmfByDocId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastLastInvNr">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetLastLastInvNr" message="tns:ILibraryService_GetLastLastInvNr_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetLastLastInvNrResponse" message="tns:ILibraryService_GetLastLastInvNr_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetInRmf" message="tns:ILibraryService_GetInRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetInRmfResponse" message="tns:ILibraryService_GetInRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetOutRmf" message="tns:ILibraryService_GetOutRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetOutRmfResponse" message="tns:ILibraryService_GetOutRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAnualReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GenerateAnualReport" message="tns:ILibraryService_GenerateAnualReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GenerateAnualReportResponse" message="tns:ILibraryService_GenerateAnualReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePart3Report">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GeneratePart3Report" message="tns:ILibraryService_GeneratePart3Report_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GeneratePart3ReportResponse" message="tns:ILibraryService_GeneratePart3Report_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMultipleRmf">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteMultipleRmf" message="tns:ILibraryService_DeleteMultipleRmf_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteMultipleRmfResponse" message="tns:ILibraryService_DeleteMultipleRmf_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetAllBooks" message="tns:ILibraryService_GetAllBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetAllBooksResponse" message="tns:ILibraryService_GetAllBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/AddBook" message="tns:ILibraryService_AddBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/AddBookResponse" message="tns:ILibraryService_AddBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBookById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteBookById" message="tns:ILibraryService_DeleteBookById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteBookByIdResponse" message="tns:ILibraryService_DeleteBookById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksByRmfId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetBooksByRmfId" message="tns:ILibraryService_GetBooksByRmfId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetBooksByRmfIdResponse" message="tns:ILibraryService_GetBooksByRmfId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibraryService/GetBooksByRmfIdArgumentExceptionFault" name="ArgumentExceptionFault" message="tns:ILibraryService_GetBooksByRmfId_ArgumentExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/UpdateBook" message="tns:ILibraryService_UpdateBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/UpdateBookResponse" message="tns:ILibraryService_UpdateBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOnHands">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetAllOnHands" message="tns:ILibraryService_GetAllOnHands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetAllOnHandsResponse" message="tns:ILibraryService_GetAllOnHands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOnHand">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteOnHand" message="tns:ILibraryService_DeleteOnHand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteOnHandResponse" message="tns:ILibraryService_DeleteOnHand_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibraryService/DeleteOnHandArgumentExceptionFault" name="ArgumentExceptionFault" message="tns:ILibraryService_DeleteOnHand_ArgumentExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodes" message="tns:ILibraryService_GetBookCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodesResponse" message="tns:ILibraryService_GetBookCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetUsers" message="tns:ILibraryService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetUsersResponse" message="tns:ILibraryService_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetUserById" message="tns:ILibraryService_GetUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetUserByIdResponse" message="tns:ILibraryService_GetUserById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/AddUser" message="tns:ILibraryService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/AddUserResponse" message="tns:ILibraryService_AddUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibraryService/AddUserArgumentExceptionFault" name="ArgumentExceptionFault" message="tns:ILibraryService_AddUser_ArgumentExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/UpdateUser" message="tns:ILibraryService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/UpdateUserResponse" message="tns:ILibraryService_UpdateUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibraryService/UpdateUserArgumentExceptionFault" name="ArgumentExceptionFault" message="tns:ILibraryService_UpdateUser_ArgumentExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteUser" message="tns:ILibraryService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteUserResponse" message="tns:ILibraryService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReg">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/AddReg" message="tns:ILibraryService_AddReg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/AddRegResponse" message="tns:ILibraryService_AddReg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnHands">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetOnHands" message="tns:ILibraryService_GetOnHands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetOnHandsResponse" message="tns:ILibraryService_GetOnHands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodesOnHand">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodesOnHand" message="tns:ILibraryService_GetBookCodesOnHand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodesOnHandResponse" message="tns:ILibraryService_GetBookCodesOnHand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodesNotOnHand">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodesNotOnHand" message="tns:ILibraryService_GetBookCodesNotOnHand_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetBookCodesNotOnHandResponse" message="tns:ILibraryService_GetBookCodesNotOnHand_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOwnedBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetUserOwnedBooks" message="tns:ILibraryService_GetUserOwnedBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetUserOwnedBooksResponse" message="tns:ILibraryService_GetUserOwnedBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationPrimitive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/AddReservationPrimitive" message="tns:ILibraryService_AddReservationPrimitive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/AddReservationPrimitiveResponse" message="tns:ILibraryService_AddReservationPrimitive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/AddReservation" message="tns:ILibraryService_AddReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/AddReservationResponse" message="tns:ILibraryService_AddReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBookReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteBookReservation" message="tns:ILibraryService_DeleteBookReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteBookReservationResponse" message="tns:ILibraryService_DeleteBookReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpiredReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/DeleteExpiredReservations" message="tns:ILibraryService_DeleteExpiredReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/DeleteExpiredReservationsResponse" message="tns:ILibraryService_DeleteExpiredReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservedBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetReservedBooks" message="tns:ILibraryService_GetReservedBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetReservedBooksResponse" message="tns:ILibraryService_GetReservedBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetReservations" message="tns:ILibraryService_GetReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetReservationsResponse" message="tns:ILibraryService_GetReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopReservationSatelite">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/StopReservationSatelite" message="tns:ILibraryService_StopReservationSatelite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/StopReservationSateliteResponse" message="tns:ILibraryService_StopReservationSatelite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartReservationSatelite">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/StartReservationSatelite" message="tns:ILibraryService_StartReservationSatelite_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/StartReservationSateliteResponse" message="tns:ILibraryService_StartReservationSatelite_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationSateliteState">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetReservationSateliteState" message="tns:ILibraryService_GetReservationSateliteState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetReservationSateliteStateResponse" message="tns:ILibraryService_GetReservationSateliteState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBookReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GenerateBookReport" message="tns:ILibraryService_GenerateBookReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GenerateBookReportResponse" message="tns:ILibraryService_GenerateBookReport_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRmfList">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetRmfList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/InsertRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/UpdateRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRmfById">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetRmfById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastIndex">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetLastIndex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRmfByDocId">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetRmfByDocId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastLastInvNr">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetLastLastInvNr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetInRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetOutRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAnualReport">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GenerateAnualReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePart3Report">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GeneratePart3Report" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMultipleRmf">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteMultipleRmf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBooks">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetAllBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBook">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/AddBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBookById">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteBookById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksByRmfId">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetBooksByRmfId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ArgumentExceptionFault">
+        <soap:fault use="literal" name="ArgumentExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBook">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/UpdateBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOnHands">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetAllOnHands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOnHand">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteOnHand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ArgumentExceptionFault">
+        <soap:fault use="literal" name="ArgumentExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodes">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetBookCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserById">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ArgumentExceptionFault">
+        <soap:fault use="literal" name="ArgumentExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ArgumentExceptionFault">
+        <soap:fault use="literal" name="ArgumentExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReg">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/AddReg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnHands">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetOnHands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodesOnHand">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetBookCodesOnHand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookCodesNotOnHand">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetBookCodesNotOnHand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserOwnedBooks">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetUserOwnedBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationPrimitive">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/AddReservationPrimitive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReservation">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/AddReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBookReservation">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteBookReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExpiredReservations">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/DeleteExpiredReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservedBooks">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetReservedBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservations">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopReservationSatelite">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/StopReservationSatelite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartReservationSatelite">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/StartReservationSatelite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservationSateliteState">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetReservationSateliteState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBookReport">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GenerateBookReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LibraryService">
+    <wsdl:port name="BasicHttpBinding_ILibraryService" binding="tns:BasicHttpBinding_ILibraryService">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/ProjectLibraryService/Service1/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

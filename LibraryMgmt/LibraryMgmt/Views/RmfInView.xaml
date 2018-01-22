@@ -1,0 +1,32 @@
+﻿<Page x:Class="LibraryMgmt.Views.RmfInView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryMgmt.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="RmfInView">
+    
+    
+
+    <Grid Background="#FFE5E5E5">
+        <ListView x:Name="listView" ItemsSource="{Binding RmfInCollection}" SelectedItem="{Binding RmfInSelectedItem}" SelectionChanged="listView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Numar" DisplayMemberBinding="{Binding IdRmf}"/>
+
+                    <GridViewColumn Header="Data Inregistrare" DisplayMemberBinding="{Binding DateIn}"/>
+                    <GridViewColumn Header="Nr. doc intrare" DisplayMemberBinding="{Binding DocId}"/>
+                    <GridViewColumn Header="Numar de exemplare" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Valoare totala" DisplayMemberBinding="{Binding TotalValue}"/>
+                    <GridViewColumn Header="Prim.Inv. Nr" DisplayMemberBinding="{Binding FirstInvNr}"/>
+                    <GridViewColumn Header="Ultim.Inv. Nr" DisplayMemberBinding="{Binding LastInvNr}"/>
+                    <GridViewColumn Header="Continut" DisplayMemberBinding="{Binding ContentCat}"/>
+                    <GridViewColumn Header="Provenienta" DisplayMemberBinding="{Binding Origin}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>
