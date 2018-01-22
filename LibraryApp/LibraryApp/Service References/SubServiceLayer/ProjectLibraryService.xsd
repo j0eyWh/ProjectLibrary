@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ProjectLibraryService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BirthDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Idnp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserPic" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfOnHand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OnHand" nillable="true" type="tns:OnHand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOnHand" nillable="true" type="tns:ArrayOfOnHand" />
+  <xs:complexType name="OnHand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Book" nillable="true" type="tns:Book" />
+      <xs:element minOccurs="0" name="BookCode" nillable="true" type="tns:BookCode" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="LendDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OnHandId" type="xs:int" />
+      <xs:element minOccurs="0" name="ReturnDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OnHand" nillable="true" type="tns:OnHand" />
+  <xs:complexType name="Book">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:int" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookId" type="xs:int" />
+      <xs:element minOccurs="0" name="CanLend" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Collection" nillable="true" type="tns:Rmf" />
+      <xs:element minOccurs="0" name="CollectionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Publisher" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Book" nillable="true" type="tns:Book" />
+  <xs:complexType name="Rmf">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContentCat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateIn" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOut" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocImg" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="FirstInvNr" type="xs:int" />
+      <xs:element minOccurs="0" name="IdRmf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsOut" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastInvNr" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OutCause" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalValue" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rmf" nillable="true" type="tns:Rmf" />
+  <xs:complexType name="BookCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Book" nillable="true" type="tns:Book" />
+      <xs:element minOccurs="0" name="BookId" type="xs:int" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookCode" nillable="true" type="tns:BookCode" />
+  <xs:complexType name="ArrayOfReservedBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReservedBook" nillable="true" type="tns:ReservedBook" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReservedBook" nillable="true" type="tns:ArrayOfReservedBook" />
+  <xs:complexType name="ReservedBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookCode" nillable="true" type="tns:BookCode" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="ReservationId" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeOut" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReservedBook" nillable="true" type="tns:ReservedBook" />
+  <xs:complexType name="ArrayOfBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBook" nillable="true" type="tns:ArrayOfBook" />
+  <xs:complexType name="ArrayOfBookCodeOwned">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookCodeOwned" nillable="true" type="tns:BookCodeOwned" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookCodeOwned" nillable="true" type="tns:ArrayOfBookCodeOwned" />
+  <xs:complexType name="BookCodeOwned">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookCode" nillable="true" type="tns:BookCode" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LendDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReturnDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookCodeOwned" nillable="true" type="tns:BookCodeOwned" />
+</xs:schema>

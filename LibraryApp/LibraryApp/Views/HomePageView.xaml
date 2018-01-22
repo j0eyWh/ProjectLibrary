@@ -1,0 +1,75 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibraryApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:LibraryApp.ViewModels"
+    x:Class="LibraryApp.Views.HomePageView"
+    mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition IsStaggeringEnabled="True" FromVerticalOffset="-200"/>
+        </TransitionCollection>
+    </Page.Transitions>
+    
+    <Page.DataContext>
+        <ViewModels:HomeViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" MinHeight="325" />
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock FontSize="23" Margin="20,20,0,0">Newest Additions</TextBlock>
+            <ScrollViewer  VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Hidden" Margin="10,10,0,10">
+                <GridView  ItemsSource="{Binding NewestBooks}" IsItemClickEnabled="True" ItemClick="BookClick">
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="200px" Height="250px" Margin="5">
+                                <Grid.Background >
+                                    <ImageBrush ImageSource="{Binding CoverImage, Mode=OneWay}" Stretch="UniformToFill" AlignmentY="Top"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </ScrollViewer>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <TextBlock FontSize="23" Margin="20,20,0,0">Picks for you</TextBlock>
+            <TextBlock FontSize="16" Margin="20,0,0,0" Visibility="{Binding IsEmpty}" Text="No recommendations found. Read something to let us know what you love"></TextBlock>
+            <ScrollViewer  VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Hidden" Margin="10,10,0,10">
+                <GridView  ItemsSource="{Binding RecommendedBooks}" IsItemClickEnabled="True" ItemClick="BookClick">
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="200px" Height="250px" Margin="5">
+                                <Grid.Background >
+                                    <ImageBrush ImageSource="{Binding CoverImage, Mode=OneWay}" Stretch="UniformToFill" AlignmentY="Top"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+
+</Page>

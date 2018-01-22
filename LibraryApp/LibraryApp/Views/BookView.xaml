@@ -1,0 +1,109 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibraryApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:LibraryApp.ViewModels"
+    x:Class="LibraryApp.Views.BookView"
+    mc:Ignorable="d" UseLayoutRounding="True" >
+    <Page.BottomAppBar>
+        <CommandBar Background="{ThemeResource SystemAccentColor}" ClosedDisplayMode="Minimal">
+            <AppBarButton Label="Reserve" Icon="OutlineStar" Click="ReserveBook"/>
+
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+
+    <Page.DataContext>
+        <ViewModels:BookViewModel x:Name="BookViewModel"/>
+    </Page.DataContext>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <ProgressBar x:Name="ProgressBar" Height="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="200" IsIndeterminate="True" Visibility="Visible"/>
+        <ScrollViewer HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"  VerticalScrollMode="Disabled">
+            <Grid>
+                <SplitView IsPaneOpen="True" PanePlacement="Left" DisplayMode="Inline" OpenPaneLength="600">
+                    <SplitView.Content>
+                        <Grid >
+                            <StackPanel>
+                                <TextBlock Text="About the book" FontSize="29.333" Margin="15,5,0,0"/>
+                                <TextBlock Text="Short info about the book" FontSize="21.333" Margin="15,0,0,0" Foreground="#B2000000" FontFamily="Segoe UI Semilight"/>
+
+                                <Grid x:Name="TextContentGrid" MinWidth="450" Margin="15,20,0,0" HorizontalAlignment="Left">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+
+                                    </Grid.RowDefinitions>
+                                    <StackPanel>
+                                        <TextBlock x:Name="TitleTb" Margin="0,0,0,10" FontSize="20">Title:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">Author:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">Category:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">Publisher:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">Available:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">In stock:</TextBlock>
+                                        <TextBlock Margin="0,0,0,10" FontSize="20">Description:</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="0" Grid.Column="1">
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding Book.Title, TargetNullValue='There should be the title'}" FontSize="20"></TextBlock>
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding Book.Author, TargetNullValue='There should be the author'}" FontSize="20"></TextBlock>
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding Book.Category, TargetNullValue='There should be the category'}" FontSize="20"></TextBlock>
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding Book.Publisher, TargetNullValue='There should the publisher'}" FontSize="20"></TextBlock>
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding AvailableCount, Mode=OneWay}" FontSize="20"></TextBlock>
+                                        <TextBlock Margin="0,0,0,10" Text="{Binding Book.Amount}" FontSize="20"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="16" MaxWidth="600" MinWidth="450" TextWrapping="Wrap" TextLineBounds="TrimToBaseline" Text="{Binding Book.Description}" HorizontalAlignment="Left" />
+
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </SplitView.Content>
+                    <SplitView.Pane>
+
+                        <Grid x:Name="grid">
+                            <Grid.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="200"></EntranceThemeTransition>
+                                </TransitionCollection>
+                            </Grid.Transitions>
+                            <Grid.Background>
+                                <ImageBrush ImageSource="{Binding Book.CoverImage, Mode=OneWay}" Stretch="UniformToFill" AlignmentX="Left"></ImageBrush>
+                            </Grid.Background>
+
+                            <RelativePanel x:Name="relativePanel">
+                                <RelativePanel.Transitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromVerticalOffset="400"></EntranceThemeTransition>
+                                    </TransitionCollection>
+                                </RelativePanel.Transitions>
+                                <RelativePanel.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Offset="1" Color="#CC000000"/>
+                                        <GradientStop Color="Transparent"/>
+                                    </LinearGradientBrush>
+                                </RelativePanel.Background>
+
+                                <StackPanel RelativePanel.AlignBottomWithPanel="True" Margin="30,0,0,35">
+                                    <TextBlock x:Name="TitleTextBlock" Text="{Binding Book.Title, TargetNullValue='Here will be the title'}" FontSize="60" Foreground="White"/>
+                                    <TextBlock x:Name="AuthorTextBlock" Text="{Binding Book.Author, TargetNullValue='by some author'}" RelativePanel.Below="TitleTextBlock" Foreground="White" FontSize="40"></TextBlock>
+                                </StackPanel>
+
+                            </RelativePanel>
+
+
+                        </Grid>
+                    </SplitView.Pane>
+                </SplitView>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
+</Page>

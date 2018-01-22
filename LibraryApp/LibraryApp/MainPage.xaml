@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="LibraryApp.MainPage"
+    x:Name="LayoutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibraryApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:Name="MySplitView"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150" PaneBackground="#7FADD8E6" DisplayMode="CompactInline">
+        <SplitView.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="Assets/logInBackground.jpg"/>
+        </SplitView.Background>
+        <SplitView.Pane>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Background="{ThemeResource SystemAccentColor}"  >
+                
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click" RelativePanel.AlignLeftWithPanel="True"/>
+
+                <StackPanel x:Name="HomePane" Orientation="Horizontal">
+                    <Button x:Name="HomeBtn" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;"
+                   Width="50" Height="50" Background="Transparent" Click="HomeBtn_Click" Foreground="Black"/>
+                    <TextBlock Text="Home" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel x:Name="LibraryPane" Orientation="Horizontal">
+                    <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE8F1;"
+                       Width="50" Height="50" Background="Transparent" Click="LibraryButton_Click"/>
+                    <TextBlock Text="Library" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel x:Name="ImReadingPane"  Orientation="Horizontal" Tapped="ReadingBtn_Click">
+                    <Button  x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#59561;"
+                       Width="50" Height="50" Background="Transparent" Click="ReadingBtn_Click"/>
+                    <TextBlock Text="I'm reading" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                    <StackPanel x:Name="IveReadPane"  Orientation="Horizontal">
+                        <Button  x:Name="IveReadButton" FontFamily="Segoe MDL2 Assets" Content="&#xEA37;"
+                           Width="50" Height="50" Background="Transparent" Click="IveReadButton_Click"/>
+                        <TextBlock Text="I've read" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                
+                    <StackPanel  Orientation="Horizontal">
+                        <Button  x:Name="IWantToReadButton" FontFamily="Segoe MDL2 Assets" Content="&#xE0A5;"
+                           Width="50" Height="50" Background="Transparent" Click="IWillReadButton_Click"/>
+                        <TextBlock Text="I'll read" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                
+                <!--bottom-->
+                
+                    <StackPanel x:Name="AccountPane" Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Button Click="AccountInfoBtn_Click" FontFamily="Segoe MDL2 Assets" Content="&#xE8D4;"
+                           Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="About me" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel x:Name="LogOfPane" Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Button  FontFamily="Segoe MDL2 Assets" Content="&#xE830;"
+                           Width="50" Height="50" Background="Transparent" Click="LogOffBtn_Click"/>
+                        <TextBlock Text="Log off..." FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                
+            </StackPanel>
+            </ScrollViewer>
+        </SplitView.Pane>
+
+        <SplitView.Content>
+            <RelativePanel Background="#7FADD8E6">
+                <Frame x:Name="MainFrame" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    
+                </Frame>
+            </RelativePanel>
+        </SplitView.Content>
+
+        <SplitView.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition FromHorizontalOffset="200"/>
+            </TransitionCollection>
+        </SplitView.Transitions>
+    </SplitView>
+</Page>

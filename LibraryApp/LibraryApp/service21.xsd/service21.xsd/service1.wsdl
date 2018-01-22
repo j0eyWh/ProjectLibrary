@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SubServiceLayer" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ProjectLibraryService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISubServiceLayer_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_CanLogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanLogIn" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_CanLogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanLogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserImage" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserBooksOnHandsCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBooksOnHandsCount" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserBooksOnHandsCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBooksOnHandsCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBook" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserReservedBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserReservedBooks" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserReservedBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserReservedBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBooksCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksCategories" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBooksCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBooksByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksByCategory" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBooksByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetAvailableCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCount" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetAvailableCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBookById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookById" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetBookById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_HasReserved_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasReserved" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_HasReserved_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasReservedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_HasOnHands_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasOnHands" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_HasOnHands_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasOnHandsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_AddReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservation" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_AddReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_SearchBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchBooks" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_SearchBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserPreviouslyOwnedBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPreviouslyOwnedBooks" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetUserPreviouslyOwnedBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserPreviouslyOwnedBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetNewestBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewestBooks" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetNewestBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewestBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetRecommendedBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedBooks" />
+  </wsdl:message>
+  <wsdl:message name="ISubServiceLayer_GetRecommendedBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedBooksResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISubServiceLayer">
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUser" message="tns:ISubServiceLayer_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserResponse" message="tns:ISubServiceLayer_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanLogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/CanLogIn" message="tns:ISubServiceLayer_CanLogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/CanLogInResponse" message="tns:ISubServiceLayer_CanLogIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserImage" message="tns:ISubServiceLayer_GetUserImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserImageResponse" message="tns:ISubServiceLayer_GetUserImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBooksOnHandsCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserBooksOnHandsCount" message="tns:ISubServiceLayer_GetUserBooksOnHandsCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserBooksOnHandsCountResponse" message="tns:ISubServiceLayer_GetUserBooksOnHandsCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserBook" message="tns:ISubServiceLayer_GetUserBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserBookResponse" message="tns:ISubServiceLayer_GetUserBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserReservedBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserReservedBooks" message="tns:ISubServiceLayer_GetUserReservedBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserReservedBooksResponse" message="tns:ISubServiceLayer_GetUserReservedBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBooksCategories" message="tns:ISubServiceLayer_GetBooksCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBooksCategoriesResponse" message="tns:ISubServiceLayer_GetBooksCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBooksByCategory" message="tns:ISubServiceLayer_GetBooksByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBooksByCategoryResponse" message="tns:ISubServiceLayer_GetBooksByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetAvailableCount" message="tns:ISubServiceLayer_GetAvailableCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetAvailableCountResponse" message="tns:ISubServiceLayer_GetAvailableCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBookById" message="tns:ISubServiceLayer_GetBookById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetBookByIdResponse" message="tns:ISubServiceLayer_GetBookById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HasReserved">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/HasReserved" message="tns:ISubServiceLayer_HasReserved_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/HasReservedResponse" message="tns:ISubServiceLayer_HasReserved_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HasOnHands">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/HasOnHands" message="tns:ISubServiceLayer_HasOnHands_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/HasOnHandsResponse" message="tns:ISubServiceLayer_HasOnHands_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/AddReservation" message="tns:ISubServiceLayer_AddReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/AddReservationResponse" message="tns:ISubServiceLayer_AddReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/SearchBooks" message="tns:ISubServiceLayer_SearchBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/SearchBooksResponse" message="tns:ISubServiceLayer_SearchBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPreviouslyOwnedBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserPreviouslyOwnedBooks" message="tns:ISubServiceLayer_GetUserPreviouslyOwnedBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetUserPreviouslyOwnedBooksResponse" message="tns:ISubServiceLayer_GetUserPreviouslyOwnedBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetNewestBooks" message="tns:ISubServiceLayer_GetNewestBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetNewestBooksResponse" message="tns:ISubServiceLayer_GetNewestBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISubServiceLayer/GetRecommendedBooks" message="tns:ISubServiceLayer_GetRecommendedBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISubServiceLayer/GetRecommendedBooksResponse" message="tns:ISubServiceLayer_GetRecommendedBooks_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISubServiceLayer" type="tns:ISubServiceLayer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanLogIn">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/CanLogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserImage">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUserImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBooksOnHandsCount">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUserBooksOnHandsCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBook">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUserBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserReservedBooks">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUserReservedBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksCategories">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetBooksCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBooksByCategory">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetBooksByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableCount">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetAvailableCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookById">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetBookById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasReserved">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/HasReserved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasOnHands">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/HasOnHands" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReservation">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/AddReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBooks">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/SearchBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPreviouslyOwnedBooks">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetUserPreviouslyOwnedBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestBooks">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetNewestBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedBooks">
+      <soap:operation soapAction="http://tempuri.org/ISubServiceLayer/GetRecommendedBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SubServiceLayer">
+    <wsdl:port name="BasicHttpBinding_ISubServiceLayer" binding="tns:BasicHttpBinding_ISubServiceLayer">
+      <soap:address location="http://localhost:8733/Design_Time_Addresses/ProjectLibraryService/SubServiceLayer/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

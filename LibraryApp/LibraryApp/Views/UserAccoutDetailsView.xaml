@@ -1,0 +1,56 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LibraryApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="using:LibraryApp.ViewModels"
+    x:Class="LibraryApp.Views.UserAccoutDetailsView"
+    mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition IsStaggeringEnabled="True" FromVerticalOffset="-200"/>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.DataContext>
+        <ViewModels:UserViewModel x:Name="UserViewModel"/>
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Ellipse x:Name="UserPicEllipse" Height="100" Width="100" RelativePanel.AlignRightWithPanel="True" Margin="0,10,10,0" Stroke="#7F328FEC" StrokeThickness="5">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill" ImageSource="{Binding ImageSource, FallbackValue='Assets\StoreLogo.png', TargetNullValue='Assets\StoreLogo.png'}" AlignmentY="Top"/>
+            </Ellipse.Fill>
+            <Ellipse.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition FromHorizontalOffset="1000"></EntranceThemeTransition>
+                </TransitionCollection>
+            </Ellipse.Transitions>
+        </Ellipse>
+        <TextBlock x:Name="TitleTextBlock" Text="About you:" RelativePanel.AlignLeftWithPanel="True" Margin="10,0,0,0" FontSize="32" FontFamily="Segoe UI Light" RelativePanel.AlignVerticalCenterWith="UserPicEllipse"/>
+
+
+        <Grid RelativePanel.Below="UserPicEllipse" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Padding="0" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="291*"/>
+                <ColumnDefinition Width="349*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="25"/>
+                <RowDefinition Height="Auto" MinHeight="25"/>
+                <RowDefinition Height="Auto" MinHeight="25"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Your name: " Grid.Row="0" FontSize="18.667" Margin="5,0,0,0"></TextBlock>
+            <TextBlock Text="Your code:" Grid.Row="1" FontSize="18.667" Margin="5,0,0,0"></TextBlock>
+            <TextBlock Text="Books lent:" Grid.Row="2" FontSize="18.667" Margin="5,0,0,0"></TextBlock>
+
+            <TextBlock Text="{Binding UserFullName, TargetNullValue=log in to see your name}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" FontSize="18.667" Width="195"/>
+
+
+            <TextBlock Text="{Binding User.Idnp, TargetNullValue='log in to see your code'}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="18.667" Width="189"></TextBlock>
+            <TextBlock Text="{Binding TotalBooksOnHands, TargetNullValue=log in to see this}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="18.667" Width="10"></TextBlock>
+        </Grid>
+    </RelativePanel>
+</Page>
