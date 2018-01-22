@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHM", "GHM\GHM.csproj", "{9964AD9A-BE1B-44A0-BD43-4B0AA4C2DFFA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9964AD9A-BE1B-44A0-BD43-4B0AA4C2DFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9964AD9A-BE1B-44A0-BD43-4B0AA4C2DFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9964AD9A-BE1B-44A0-BD43-4B0AA4C2DFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9964AD9A-BE1B-44A0-BD43-4B0AA4C2DFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
