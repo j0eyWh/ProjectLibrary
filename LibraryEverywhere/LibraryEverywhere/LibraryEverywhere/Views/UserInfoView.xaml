@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.UserInfoView" Title="Profile" NavigationPage.HasBackButton="False" Icon="user.png"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere"
+             xmlns:controls="clr-namespace:LibraryEverywhere.Controls;assembly=LibraryEverywhere"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fft="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem  Text="Edit" Clicked="EditMenuItem_OnClicked">
+      <ToolbarItem.Order>
+        <OnPlatform x:TypeArguments="ToolbarItemOrder" iOS="Secondary" Android="Primary"/>
+      </ToolbarItem.Order>
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <OnPlatform.Android>
+            <FileImageSource File="edit.png"></FileImageSource>
+          </OnPlatform.Android>
+        </OnPlatform>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem Text="Log out" Clicked="LogOffButton_OnClicked">
+      <ToolbarItem.Order>
+        <OnPlatform x:TypeArguments="ToolbarItemOrder" iOS="Secondary" Android="Primary"/>
+      </ToolbarItem.Order>
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource">
+          <OnPlatform.Android>
+            <FileImageSource File="logout.png"></FileImageSource>
+          </OnPlatform.Android>
+        </OnPlatform>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  <ContentPage.BindingContext>
+    <viewModels:UserViewModel x:Name="userViewModel"></viewModels:UserViewModel>
+  </ContentPage.BindingContext>
+
+  <Grid x:Name="MyGrid" Padding="0,10,0,0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="1*"></RowDefinition>
+    </Grid.RowDefinitions>
+
+    <controls:ImageCircle Source="{Binding User.ImageSource}" Grid.Row="0" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100"></controls:ImageCircle>
+    <TableView Grid.Row="1">
+     
+    </TableView>
+  </Grid>
+</ContentPage>

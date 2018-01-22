@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.FollowedCategories" Title="Followed Categories"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:cc ="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+          >
+  <ContentPage.BindingContext>
+    <viewModels:FollowedCategoriesViewModel x:Name="FollowedCategoriesViewModel"/>
+  </ContentPage.BindingContext>
+  <ListView x:Name="listView" IsPullToRefreshEnabled="True" HasUnevenRows="True" Header="Books" ItemsSource="{Binding Books }" GroupShortNameBinding="{Binding ShortName}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Name}">
+
+    <ListView.HeaderTemplate>
+      <DataTemplate>
+   
+        <cc:CarouselView HeightRequest="200" ItemsSource="{Binding Path=RecentBooks, Source={x:Reference FollowedCategoriesViewModel}}">
+          <cc:CarouselView.ItemTemplate>
+            <DataTemplate>
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"></RowDefinition>
+                  <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <forms:CachedImage Source="{Binding Path=CoverImage}" Grid.Row="0" Grid.RowSpan="2">
+                  <forms:CachedImage.Aspect>
+                    <OnPlatform x:TypeArguments="Aspect" iOS="AspectFill"/>
+                  </forms:CachedImage.Aspect>
+                </forms:CachedImage>
+                <StackLayout Grid.Row="1" Padding="12" BackgroundColor="#80000000">
+                  <Label Text="{Binding Title}" FontSize="16" TextColor="White"/>
+                  <Label Text="{Binding Author, StringFormat='By {0}'}" FontSize="14" TextColor="Silver"/>
+                </StackLayout>
+
+              </Grid>
+            </DataTemplate>
+          </cc:CarouselView.ItemTemplate>
+        </cc:CarouselView>
+        
+      </DataTemplate>
+    </ListView.HeaderTemplate>
+    <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Padding="10,0,10,0" Orientation="Horizontal">
+              <Label TextColor="Accent" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="{Binding Name}"></Label>
+              <Image HorizontalOptions="EndAndExpand" Source="dots2.png" HeightRequest="20" WidthRequest="20" Aspect="AspectFit">
+                <Image.GestureRecognizers>
+                  <TapGestureRecognizer CommandParameter="{Binding Name}" />
+                </Image.GestureRecognizers>
+              </Image>
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <!--<TextCell Text="{Binding Title}">
+            <TextCell.ContextActions>
+              <MenuItem Text="Reserve" CommandParameter="{Binding .}"></MenuItem>
+              <MenuItem Text="Details" CommandParameter="{Binding .}"></MenuItem>
+            </TextCell.ContextActions>
+          </TextCell>-->
+
+        <ViewCell>
+          <ViewCell.ContextActions>
+            <MenuItem Text="Reserve" Icon="reserve.png" CommandParameter="{Binding .}"/>
+            <MenuItem Text="Details" CommandParameter="{Binding BookId}">
+
+            </MenuItem>
+          </ViewCell.ContextActions>
+          <ViewCell.View>
+            <Grid Padding="5,5,10,5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+              </Grid.RowDefinitions>
+
+
+              <forms:CachedImage CacheDuration="30" DownsampleHeight="150" LoadingPriority="High" HeightRequest="150" CacheType="Disk" Source="{Binding CoverImage}" VerticalOptions="Center" DownsampleToViewSize="True"  FadeAnimationEnabled="True" Grid.Column="0" Grid.RowSpan="2">
+              </forms:CachedImage>
+              <Label Text="{Binding Title}" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
+              <Label Text="{Binding Author, StringFormat='By {0}'}" Grid.Row="1" Grid.Column="1"></Label>
+            </Grid>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

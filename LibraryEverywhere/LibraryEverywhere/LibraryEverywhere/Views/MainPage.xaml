@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.MainPage"
+                  xmlns:local ="clr-namespace:LibraryEverywhere.Views;assembly=LibraryEverywhere" NavigationPage.HasBackButton="False" Icon="ham.png" Title="MainPage" IsGestureEnabled="True" MasterBehavior="SplitOnLandscape">
+  <MasterDetailPage.Master>
+    <local:MasterPage x:Name="masterPage"></local:MasterPage>
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Detail>
+    <NavigationPage>
+      <x:Arguments>
+        <local:HomeView/>
+      </x:Arguments>
+    </NavigationPage>
+  </MasterDetailPage.Detail>
+</MasterDetailPage>

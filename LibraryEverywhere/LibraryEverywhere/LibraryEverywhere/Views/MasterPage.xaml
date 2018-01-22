@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.MasterPage" Title="Menu" Icon="menu.png"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:LibraryEverywhere.Controls;assembly=LibraryEverywhere"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+  <ContentPage.BindingContext>
+    <viewModels:MasterPageViewModel x:Name="MasterPageViewModel"></viewModels:MasterPageViewModel>
+  </ContentPage.BindingContext>
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="1*" />
+        <RowDefinition Height="4*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <AbsoluteLayout Grid.Row="0">
+
+        <ff:CachedImage HeightRequest="150" AbsoluteLayout.LayoutFlags="All" DownsampleToViewSize="True" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Source="logInBackgroundBlured.jpg" Aspect="AspectFill"/>
+        <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+          </Grid.ColumnDefinitions>
+
+            <ff:CachedImage MinimumHeightRequest="50" Margin="10" VerticalOptions="Center" HorizontalOptions="Center" x:Name="ProfilePic"  DownsampleToViewSize="True"
+            Source="{Binding UserPic}" Aspect="AspectFill">
+              <ff:CachedImage.Transformations>
+                <transformations:CircleTransformation></transformations:CircleTransformation>
+              </ff:CachedImage.Transformations>
+            </ff:CachedImage>
+   
+          <StackLayout Grid.Column="1" VerticalOptions="Center">
+            <Label FontSize="18" TextColor="White" Text="{Binding UserName, StringFormat='Hi, {0}!'}"/>
+            <Label FontSize="16" TextColor="Silver" Text="{Binding Email}"/>
+          </StackLayout>
+        </Grid>
+      </AbsoluteLayout>
+
+      <ListView Grid.Row="1" RowHeight="40" x:Name="listView" ItemsSource="{Binding Items}" Margin="10,0,0,0" VerticalOptions="FillAndExpand" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+
+            <ViewCell>
+              <StackLayout Padding="5,0,0,0" Orientation="Horizontal">
+                <ff:CachedImage DownsampleToViewSize="True" HeightRequest="30" WidthRequest="30" Source="{Binding IconSource}"></ff:CachedImage>
+                <Label Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+      <ListView Grid.Row="2" RowHeight="40" x:Name="technicalListView" ItemsSource="{Binding TechnicalItems}" VerticalOptions="EndAndExpand" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+
+            <ViewCell>
+              <StackLayout VerticalOptions="CenterAndExpand" Padding="5,0,0,0" Orientation="Horizontal">
+                <ff:CachedImage DownsampleToViewSize="True" HeightRequest="30" WidthRequest="30" Source="{Binding IconSource}"></ff:CachedImage>
+                <Label Text="{Binding Title}" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+    
+  </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.OwnedDetailsView"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere" Title="Details"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Check Reading" Icon="pin.png" x:Name="Check" Clicked="Check_OnClicked" CommandParameter="{Binding OwnedBook}"/>
+  </ContentPage.ToolbarItems>
+  <ContentPage.BindingContext>
+    <viewModels:OwnedDetailsViewModel x:Name="OwnedDetailsViewModel"/>
+  </ContentPage.BindingContext>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Label Text="{Binding OwnedBook.BookCode.Book.Title}" Margin="10,0,0,0" TextColor="Accent" FontSize="20"></Label>
+    <ff:CachedImage Source="{Binding OwnedBook.BookCode.Book.CoverImage}" Grid.Row="1"></ff:CachedImage>
+    <StackLayout Grid.Row="2" Margin="10, 10,10, 0">
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Author"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.BookCode.Book.Author}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Category"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.BookCode.Book.Category}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Publisher"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.BookCode.Book.Publisher}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Year"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.BookCode.Book.Year}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Your copy's code"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.Code}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label FontSize="17" FontAttributes="Bold" Text="Return Date"/>
+        <Label FontSize="17" Text="{Binding OwnedBook.ReturnDate}" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+    </StackLayout>
+    <map:Map Grid.Row="3" x:Name="Map"/>
+
+  </Grid>
+
+
+
+</ContentPage>

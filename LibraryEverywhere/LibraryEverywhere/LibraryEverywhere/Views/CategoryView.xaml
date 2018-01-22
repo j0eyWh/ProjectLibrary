@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.CategoryView"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" Title="{Binding Category}">
+  
+  <ContentPage.BindingContext>
+    <viewModels:CategoryViewModel x:Name="CategoryViewModel"/>
+  </ContentPage.BindingContext>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Follow" Clicked="FollowCategory_OnClicked" Icon="heart.png"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+  <ListView x:Name="listView" IsPullToRefreshEnabled="True" HasUnevenRows="True" Header="Books" ItemsSource="{Binding Books }" GroupShortNameBinding="{Binding ShortName}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Name}">
+
+    <ListView.HeaderTemplate>
+      <DataTemplate>
+        <StackLayout Padding="10,10,10,10">
+          <Label Text="{Binding Category}" FontSize="18"></Label>
+        </StackLayout>
+      </DataTemplate>
+    </ListView.HeaderTemplate>
+    <ListView.GroupHeaderTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <ViewCell.View>
+            <StackLayout Padding="10,0,10,0" Orientation="Horizontal">
+              <Label FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="{Binding Name}"></Label>
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+
+      </DataTemplate>
+    </ListView.GroupHeaderTemplate>
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+
+        <ViewCell>
+          <ViewCell.ContextActions>
+            <MenuItem Text="Details" CommandParameter="{Binding .}"/>
+          </ViewCell.ContextActions>
+          <ViewCell.View>
+            <Grid Padding="5,5,10,5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+              </Grid.RowDefinitions>
+              
+
+              <forms:CachedImage CacheDuration="30" DownsampleHeight="150" LoadingPriority="High" HeightRequest="150" CacheType="Disk" Source="{Binding CoverImage}" VerticalOptions="Center" DownsampleToViewSize="True"  FadeAnimationEnabled="True" Grid.Column="0" Grid.RowSpan="2">
+              </forms:CachedImage>
+              <Label Text="{Binding Title}" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
+              <Label Text="{Binding Author, StringFormat='By {0}'}" Grid.Row="1" Grid.Column="1"></Label>
+            </Grid>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+</ContentPage>

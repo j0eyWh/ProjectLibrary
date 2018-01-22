@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:LibraryEverywhere.Controls;assembly=LibraryEverywhere"
+             x:Class="LibraryEverywhere.Views.UserEditView" Title="Profile edit"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere">
+  <ContentPage.BindingContext>
+    <viewModels:UserEditViewModel x:Name="UserEditViewModel"/>
+  </ContentPage.BindingContext>
+  <ScrollView>
+  <Grid x:Name="MyGrid" Padding="0,10,0,0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="1*"></RowDefinition>
+    </Grid.RowDefinitions>
+    
+    <controls:ImageCircle x:Name="UserPic" Source="{Binding User.ImageSource}" Grid.Row="0" HeightRequest="100" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="100">
+      <controls:ImageCircle.GestureRecognizers>
+        <TapGestureRecognizer Tapped="UserPicTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+      </controls:ImageCircle.GestureRecognizers>
+    </controls:ImageCircle>
+    <StackLayout Grid.Row="1" Padding="5">
+      <Label FontSize="17" TextColor="Accent" Text="Name"/>
+      <Entry Placeholder="Name" Text="{Binding User.Name, Mode=TwoWay}"/>
+
+      <Label FontSize="17" TextColor="Accent" Text="Surname"/>
+      <Entry Placeholder="Name" Text="{Binding User.Surname, Mode=TwoWay}"/>
+
+      <Label FontSize="17" TextColor="Accent" Text="Email"/>
+      <Entry Placeholder="Name" Text="{Binding User.Email, Mode=TwoWay}"/>
+
+      <Label FontSize="17" TextColor="Accent" Text="Phone"/>
+      <Entry Placeholder="Name" Text="{Binding User.PhoneNumber, Mode=TwoWay}"/>
+      
+      <Button Text="Save changes" Clicked="SaveChanges_ButtonClicked" HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
+  </Grid>
+  </ScrollView>
+</ContentPage>

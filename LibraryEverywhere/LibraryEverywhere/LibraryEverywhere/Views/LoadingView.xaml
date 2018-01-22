@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.LoadingView"
+  xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+  xmlns:fft="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+  <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+  <ff:CachedImage x:Name="Imagea" Source="loadingBackground.jpg" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="All"  AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+    <ff:CachedImage.Transformations>
+      <!--<fft:BlurredTransformation Radius="1000000000"></fft:BlurredTransformation>
+      <fft:CircleTransformation></fft:CircleTransformation>
+    <fft:GrayscaleTransformation></fft:GrayscaleTransformation>-->
+    </ff:CachedImage.Transformations>
+  </ff:CachedImage>
+
+  <Grid AbsoluteLayout.LayoutFlags="All"  AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+      <ActivityIndicator IsRunning="True"></ActivityIndicator>
+      <Label Text="Trying to connect to our servicies..." x:Name="StatusLabel" TextColor="White"></Label>
+    </StackLayout>
+  </Grid>  
+
+  </AbsoluteLayout>
+</ContentPage>

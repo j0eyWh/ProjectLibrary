@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.LoginView" Title="Log in"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+  <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+    <Image AbsoluteLayout.LayoutFlags="All"  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            Source="logInBackgroundBlured.jpg" Aspect="AspectFill"/>
+    
+
+    <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="2*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="3*"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Grid.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="10,50,10,10" Android="10"></OnPlatform>
+      </Grid.Padding>
+
+      <ff:CachedImage Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="125" WidthRequest="125" Source="bookV2.png">
+        <ff:CachedImage.GestureRecognizers>
+          <TapGestureRecognizer Tapped="Easter"></TapGestureRecognizer>
+        </ff:CachedImage.GestureRecognizers>
+      </ff:CachedImage>
+
+      <StackLayout Grid.Row="1" Padding="0, 30, 0, 0">
+
+        <Entry x:Name="LogInEntry" Keyboard="Email" Placeholder="Email">
+          <Entry.Opacity>
+            <OnPlatform x:TypeArguments="x:Double" iOS="0.5" Android="1"/>
+          </Entry.Opacity>
+          <Entry.PlaceholderColor>
+            <OnPlatform x:TypeArguments="Color" Android="Silver" iOS="Default"/>
+          </Entry.PlaceholderColor>
+          <Entry.TextColor>
+            <OnPlatform x:TypeArguments="Color" Android="White" iOS="Default"/>
+          </Entry.TextColor>
+        </Entry>
+
+        <Entry x:Name="IdnpEntry" TextChanged="IdnpEntry_OnTextChanged" Keyboard="Numeric" Placeholder="Idnp">
+          <Entry.Opacity>
+            <OnPlatform x:TypeArguments="x:Double" iOS="0.5" Android="1"/>
+          </Entry.Opacity>
+          <Entry.PlaceholderColor>
+            <OnPlatform x:TypeArguments="Color" Android="Silver" iOS="Default"/>
+          </Entry.PlaceholderColor>
+          <Entry.TextColor>
+            <OnPlatform x:TypeArguments="Color" Android="White" iOS="Default"/>
+          </Entry.TextColor>
+        </Entry>
+
+        <!--<StackLayout Padding="5, 5, 0, 0" Orientation="Horizontal">
+          <StackLayout.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean" iOS="False" Android="True"></OnPlatform>
+          </StackLayout.IsVisible>
+          <Label HorizontalOptions="Start" TextColor="White" VerticalOptions="Center" Text="Stay logged in"></Label>
+          --><!--<cbox:Checkbox x:Name="StayCb"  HorizontalOptions="Start">
+          </cbox:Checkbox>--><!--
+        </StackLayout>-->
+
+        <Button Text="Log in" BorderWidth="1" WidthRequest="150" BorderColor="Accent" Clicked="Button_OnClicked" BackgroundColor="Teal" HorizontalOptions="Center">
+          <Button.TextColor>
+            <OnPlatform x:TypeArguments="Color" Android="White" iOS="White"/>
+          </Button.TextColor>
+        <Button.Opacity>
+          <OnPlatform x:TypeArguments="x:Double" Android="Infinity" iOS="0.5"/>
+        </Button.Opacity>
+        </Button>
+        <ActivityIndicator x:Name="activityIndicator"  HorizontalOptions="Center"></ActivityIndicator>
+      </StackLayout>
+    </Grid>
+  </AbsoluteLayout>
+</ContentPage>

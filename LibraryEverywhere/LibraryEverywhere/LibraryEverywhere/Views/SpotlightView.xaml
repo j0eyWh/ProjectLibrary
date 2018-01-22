@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LibraryEverywhere.Views.SpotlightView"
+             xmlns:viewModels="clr-namespace:LibraryEverywhere.ViewModels;assembly=LibraryEverywhere"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+  xmlns:controls ="clr-namespace:LibraryEverywhere.Controls;assembly=LibraryEverywhere">
+  <Label Text="Super content here" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+  <ContentPage.BindingContext>
+    <viewModels:SpotlightViewModel x:Name="SpotlightViewModel"/>
+  </ContentPage.BindingContext>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="1*"/>
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="1*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Label Grid.Row="0" Text="Picks for you" TextColor="Accent" FontSize="18" HorizontalTextAlignment="Center"/>
+
+      <cv:CarouselView Position="{Binding SuggestedPosition, Mode=TwoWay}" Grid.Row="1" ItemsSource="{Binding SuggestedBooks}">
+        <cv:CarouselView.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+              </Grid.RowDefinitions>
+
+              <ff:CachedImage Source="{Binding CoverImage}" Grid.Row="0" Grid.RowSpan="2"></ff:CachedImage>
+              <StackLayout Grid.Row="1" Padding="12" BackgroundColor="#80000000">
+                <Label Text="{Binding Title}" FontSize="16" TextColor="White"/>
+                <Label Text="{Binding Author, StringFormat='By {0}'}" FontSize="14" TextColor="Silver"/>
+              </StackLayout>
+
+            </Grid>
+          </DataTemplate>
+        </cv:CarouselView.ItemTemplate>
+      </cv:CarouselView>
+      <controls:CarouselIndicators Padding="0,0,0,5" VerticalOptions="Center" HeightRequest="12" ItemsSource="{Binding SuggestedBooks}"  Grid.Row="2" SelectedIndicator="SelectedCircle.png" UnselectedIndicator="UnselectedCircle.png" Position="{Binding SuggestedPosition}">
+        <controls:CarouselIndicators.IndicatorHeight>
+          <OnPlatform x:TypeArguments="x:Double" iOS="10" Android="14"></OnPlatform>
+        </controls:CarouselIndicators.IndicatorHeight>
+        <controls:CarouselIndicators.IndicatorWidth>
+          <OnPlatform x:TypeArguments="x:Double" iOS="10" Android="14"></OnPlatform>
+        </controls:CarouselIndicators.IndicatorWidth>
+      </controls:CarouselIndicators>
+    </Grid>
+
+    <Grid Grid.Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="1*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Label Grid.Row="0" Text="Newest Additions" TextColor="Accent" FontSize="18" HorizontalTextAlignment="Center"/>
+
+      <cv:CarouselView Position="{Binding NewestPosition, Mode=TwoWay}" Grid.Row="1" ItemsSource="{Binding NewestBooks}">
+        <cv:CarouselView.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+              </Grid.RowDefinitions>
+
+
+              <ff:CachedImage Source="{Binding CoverImage}" Grid.Row="0" Grid.RowSpan="2"></ff:CachedImage>
+              <StackLayout Grid.Row="1" Padding="12" BackgroundColor="#80000000">
+                <Label Text="{Binding Title}" FontSize="16" TextColor="White"/>
+                <Label Text="{Binding Author, StringFormat='By {0}'}" FontSize="14" TextColor="Silver"/>
+              </StackLayout>
+
+            </Grid>
+          </DataTemplate>
+        </cv:CarouselView.ItemTemplate>
+      </cv:CarouselView>
+      <controls:CarouselIndicators Padding="0,0,0,5" VerticalOptions="Center" HeightRequest="12" ItemsSource="{Binding NewestBooks}" Grid.Row="2" SelectedIndicator="SelectedCircle.png" UnselectedIndicator="UnselectedCircle.png" Position="{Binding NewestPosition}">
+        <controls:CarouselIndicators.IndicatorHeight>
+          <OnPlatform x:TypeArguments="x:Double" iOS="10" Android="12"></OnPlatform>
+        </controls:CarouselIndicators.IndicatorHeight>
+        <controls:CarouselIndicators.IndicatorWidth>
+          <OnPlatform x:TypeArguments="x:Double" iOS="10" Android="12"></OnPlatform>
+        </controls:CarouselIndicators.IndicatorWidth>
+      </controls:CarouselIndicators>
+    </Grid>
+
+  </Grid>
+
+
+
+</ContentPage>
